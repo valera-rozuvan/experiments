@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no">
+
+  <title>Simple WebRTC application</title>
+  <meta name="description" content="Simple WebRTC application">
+  <meta name="author" content="Valera Rozuvan">
+
+  <link rel="stylesheet" href="static/css/body.css">
+</head>
+
+<body>
+  <div id="credentials">
+    <p>
+      Connect as:
+      <input type="text" id="caller-id" size="15">
+      <button id="connect">Connect</button>
+    </p>
+  </div>
+  <div id="dialler" data-active="false">
+    <p>
+      Make call to:
+      <input type="select" id="recipient-id">
+      </input>
+      <button id="dial">Call</button>
+    </p>
+    <hr />
+    <p>
+      <strong>REMOTE:</strong>
+    </p>
+    <video id="remote-video" autoplay></video>
+    <hr />
+    <p>
+      <strong>LOCAL:</strong>
+    </p>
+    <video id="local-video" autoplay muted="muted"></video>
+  </div>
+  <hr />
+  <div id="messages"></div>
+
+  <script type="text/javascript" src="static/js/peer.js"></script>
+  <script type="text/javascript" src="static/js/main.js"></script>
+</body>
+
+</html>

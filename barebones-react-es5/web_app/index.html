@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Test of React inside browser</title>
+    <meta name="description" content="Test of React inside browser">
+    <meta name="author" content="Valera Rozuvan">
+
+    <link rel="stylesheet" href="static/css/body.css">
+
+    <!-- Load React -->
+    <!--
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.6.0/prop-types.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/create-react-class@15.6.2/create-react-class.min.js"></script>
+    -->
+
+    <script type="text/javascript" src="static/js/vendor/react.16.2.0.min.js"></script>
+    <script type="text/javascript" src="static/js/vendor/react-dom.16.2.0.min.js"></script>
+    <script type="text/javascript" src="static/js/vendor/prop-types.15.6.0.min.js"></script>
+    <script type="text/javascript" src="static/js/vendor/create-react-class.15.6.2.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/javascript" src="static/js/app.js"></script>
+    <script>
+        document.write(
+            '<script src="http://' +
+            (location.host || 'localhost').split(':')[0] +
+            ':35729/livereload.js?snipver=1"></' +
+            'script>'
+        );
+    </script>
+</body>
+
+</html>

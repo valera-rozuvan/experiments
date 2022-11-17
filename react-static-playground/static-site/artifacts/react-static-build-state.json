@@ -1,0 +1,62 @@
+{
+  "prefetchRate": 5,
+  "maxThreads": null,
+  "disableRoutePrefixing": false,
+  "outputFileRate": 100,
+  "extensions": [
+    ".js",
+    ".jsx"
+  ],
+  "minLoadTime": 200,
+  "disablePreload": false,
+  "disableRuntime": false,
+  "preloadPollInterval": 300,
+  "productionSourceMaps": false,
+  "silent": false,
+  "entry": "index.js",
+  "plugins": [
+    [
+      "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/node_modules/react-static-plugin-source-filesystem/node.api.js",
+      {
+        "location": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/src/pages"
+      }
+    ],
+    "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/node_modules/react-static-plugin-reach-router/browser.api.js",
+    "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/node_modules/react-static-plugin-sitemap/dist/node.api.js",
+    "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site"
+  ],
+  "paths": {
+    "ROOT": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site",
+    "SRC": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/src",
+    "DIST": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/dist",
+    "ASSETS": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/dist",
+    "PLUGINS": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/plugins",
+    "TEMP": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/tmp",
+    "ARTIFACTS": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/artifacts",
+    "PUBLIC": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/public",
+    "NODE_MODULES": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/node_modules",
+    "EXCLUDE_MODULES": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/node_modules",
+    "PACKAGE": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/package.json",
+    "HTML_TEMPLATE": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/dist/index.html",
+    "STATIC_DATA": "/home/valera/dev/github.com/valera-rozuvan/react-static-playground/static-site/dist/staticData"
+  },
+  "siteRoot": "/",
+  "basePath": "",
+  "publicPath": "/",
+  "assetsPath": "",
+  "extractCssChunks": false,
+  "inlineCss": false,
+  "babelExcludes": [],
+  "devServer": {
+    "host": "localhost",
+    "port": 3000
+  },
+  "terser": {
+    "terserOptions": {
+      "mangle": {},
+      "parse": {},
+      "compress": {},
+      "output": {}
+    }
+  }
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <!--
+    "Remember, the web isn't about control. If a visitor to your site
+    is familiar with using a browser's native form doodad, you won't
+    be doing them any favors if you override the browser functionality
+    with your own widget, even if you think your widget looks better."
+
+    ~ Jeremy Keith
+  -->
+
+  <meta charset="utf-8" />
+  <meta name="description" content="Simple code demonstrator" />
+  <meta name="author" content="Valera Rozuvan" />
+
+  <title>Simple code demonstrator</title>
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0" />
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+    </script>
+  <![endif]-->
+
+  <script data-main="js/main" src="js/vendor/requirejs/require.min.js">
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="box a">
+      <button class="custom-btn btn-1" id="button_01">Click 1</button>
+    </div>
+    <div class="box b">
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </div>
+    <div class="box c">
+      <span class="tol_right">JS code</span>
+      <textarea class="fill_full_text" id="textarea_01">Some text.</textarea>
+    </div>
+
+    <div class="box d">
+      <button class="custom-btn btn-1">Click 2</button>
+      <br />
+      <label for="password_edit">Password: </label>
+      <input type="text" id="password_edit_id" name="password_edit" />
+    </div>
+    <div class="box e">
+      <ul>
+        <li>Item A</li>
+        <li id="password_out">!!! Please input a password !!!</li>
+        <li>Item C</li>
+      </ul>
+    </div>
+    <div class="box f">
+      <span class="tol_right">JS code</span>
+      <textarea class="fill_full_text">Some more text.</textarea>
+    </div>
+
+    <div class="box g">
+      <button class="custom-btn btn-1">Click 3</button>
+      <br />
+      <label for="hash_edit">Hash: </label>
+      <input type="text" id="hash_edit_id" name="hash_edit" />
+    </div>
+    <div class="box h">
+      <ul>
+        <li>cat</li>
+        <li id="hash_out">!!! Please input a hash !!!</li>
+        <li>fish</li>
+      </ul>
+    </div>
+    <div class="box i">
+      <span class="tol_right">JS code</span>
+      <textarea class="fill_full_text">Please edit me.</textarea>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+{
+    "name": "Array.splice()",
+    "to_run": [
+        {
+            "source": "module1",
+            "description": "Object references",
+            "githubLink": "experiments/array_splice/js/module1.js"
+        },
+        {
+            "source": "module2",
+            "description": "Array.slice() method.",
+            "githubLink": "experiments/array_splice/js/module2.js"
+        },
+        {
+            "source": "module3",
+            "description": "Array.slice() method. Part 2.",
+            "githubLink": "experiments/array_splice/js/module3.js"
+        },
+        {
+            "source": "module4",
+            "description": "Array.slice() method. Part 3.",
+            "githubLink": "experiments/array_splice/js/module4.js"
+        },
+        {
+            "source": "module5",
+            "description": "Array.slice() method. Part 4.",
+            "githubLink": "experiments/array_splice/js/module5.js"
+        }
+    ]
+}

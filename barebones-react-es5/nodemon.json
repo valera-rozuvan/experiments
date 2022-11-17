@@ -1,0 +1,6 @@
+{
+    "verbose": true,
+    "ignore": [
+        "web_app/*"
+    ]
+}

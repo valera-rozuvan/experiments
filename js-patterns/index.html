@@ -1,0 +1,289 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+   <title>JS patterns – part 1</title>
+
+  <meta http-equiv="content-type"
+    content="text/html;charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/prism.css" type="text/css" />
+
+  <link rel="alternate" type="application/rss+xml" title="zen habits RSS Feed" href="http://zenhabits.net/feed/" />
+  <link rel="pingback" href="http://zenhabits.net/xmlrpc.php" />
+
+
+<link rel="shortcut icon" href="http://zenhabits.net/favicon.ico" />
+
+
+<link href='http://fonts.googleapis.com/css?family=Cardo:400,400italic,700' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic' rel='stylesheet' type='text/css' />
+
+    <style type="text/css">
+img.wp-smiley,
+img.emoji {
+  display: inline !important;
+  border: none !important;
+  box-shadow: none !important;
+  height: 1em !important;
+  width: 1em !important;
+  margin: 0 .07em !important;
+  vertical-align: -0.1em !important;
+  background: none !important;
+  padding: 0 !important;
+}
+</style>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zenhabits.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://zenhabits.net/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 4.2.2" />
+<link rel='canonical' href='http://zenhabits.net/theme/' />
+<link rel='shortlink' href='http://zenhabits.net/?p=8490' />
+
+</head>
+<body>
+  <div class="container">
+    <div class="top">
+      <h1><a href="https://kb.epam.com/display/GDOKB/JS+Mentoring+program+Kyiv.2015-06">JS Mentoring</a> : <a id="tagline" href="https://kb.epam.com/pages/viewpage.action?pageId=290394190">JS patterns – part 1</a></h1>
+    </div> <!-- /end .top -->
+
+    <div class="post">
+
+      <h2>Promise / Deffered object</h2>
+<blockquote>
+<p>&#8216;promises can mitigate the “Pyramid of Doom”: the situation where code marches to the right faster than it marches forward.&#8217; <strong>~<a href="http://documentup.com/kriskowal/q/">Kristopher Michael Kowal</a></strong></p>
+</blockquote>
+
+<p>It might be very well that right now you are writing code like this:</p>
+
+<pre class="line-numbers"><code class="language-javascript">
+step1(function (value1) {
+    step2(value1, function(value2) {
+        step3(value2, function(value3) {
+            step4(value3, function(value4) {
+                // Do something with value4
+            });
+        });
+    });
+});</code></pre>
+
+<p>Promises allow you to rewrite your code like so:</p>
+
+<pre class="line-numbers"><code class="language-javascript">
+promisedStep1
+.then(promisedStep2)
+.then(promisedStep3)
+.then(promisedStep4)
+.then(function (value4) {
+    // Do something with value4
+})
+.catch(function (error) {
+    // Handle any error from all above steps
+})
+.done();</code></pre>
+
+<p>In the code sample above <strong>promisedStep{N}</strong> is a version of <strong>step{N}</strong> which returns a promise.</p>
+
+<img style="width: 100%;" src="images/promises.png" alt="Promises diagram" />
+
+<p>Several specifications that define promises exist.</p>
+
+<ol>
+  <li>Promises/A [<a href="http://wiki.commonjs.org/wiki/Promises/A">http://wiki.commonjs.org/wiki/Promises/A</a>]</li>
+  <li>Promises/A+ [<a href="https://promisesaplus.com">https://promisesaplus.com</a>]</li>
+  <li>Standard ECMA-262 6th Edition: Promise Objects [<a href="http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects">http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects</a>]</li>
+</ol>
+
+<h2>Chain of responsibility</h2>
+
+<p>In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain. A mechanism also exists for adding new processing objects to the end of this chain.</p>
+
+<img style="width: 100%;" src="images/Chain.gif" alt="Chain of responsibility diagram" />
+
+<p>An example of a chain-of-responsibility is event-bubbling in which an event propagates through a series of nested controls one of which may choose to handle the event.</p>
+
+<pre class="line-numbers"><code class="language-markup">
+&lt;!DOCTYPE HTML&gt;&#10;&lt;html&gt;&#10;&lt;body&gt;&#10;&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;example.css&quot;&gt;&#10;&#10;&lt;div class=&quot;d1&quot;&gt;1  &lt;!-- the topmost --&gt;&#10;    &lt;div class=&quot;d2&quot;&gt;2&#10;        &lt;div class=&quot;d3&quot;&gt;3 &lt;!-- the innermost --&gt;&#10;        &lt;/div&gt;&#10;    &lt;/div&gt;&#10;&lt;/div&gt;&#10;&#10;&lt;/body&gt;&#10;&lt;/html&gt;</code></pre>
+
+<br />
+
+<h4>Benefits of the Chain of Responsibility Pattern</h4>
+
+<p>The chain of responsibility pattern allows you to dynamically choose which object handles a request. This means you can use conditions known only at run-time to assign tasks to the most appropriate object.</p>
+
+
+<h2>Command</h2>
+
+<p>The general idea behind the Command pattern is that it provides us a means to separate the responsibilities of issuing commands from anything executing commands, delegating this responsibility to different objects instead.</p>
+
+<img  style="width: 100%;" src="images/command.png" alt="Command diagram" />
+
+<p>The Command pattern has four main parts that make it up.</p>
+
+<ol>
+  <li>Command object</li>
+  <li>Client</li>
+  <li>Invoker</li>
+  <li>Receiver</li>
+</ol>
+
+<pre class="line-numbers"><code class="language-javascript">
+var CarManager = {
+  // request information
+  requestInfo: function( model, id ){
+    return "Info for " + model + " with ID " + id + " is f1";
+  },
+
+  // purchase the car
+  buyVehicle: function( model, id ){
+    return "You have purchased Item " + id + ", a " + model;
+  },
+
+  // arrange a viewing
+  arrangeViewing: function( model, id ){
+    return "Booked a view of " + model + " ( " + id + " ) ";
+  }
+};
+
+// We want to be able to do:
+CarManager.execute( "buyVehicle", "Ford Escort", "453543" );
+
+// We can achieve this with:
+CarManager.execute = function ( name ) {
+  return CarManager[name] &&
+    CarManager[name].apply(
+      CarManager,
+      [].slice.call(arguments, 1)
+    );
+};
+</code></pre>
+
+
+<h2>Memento</h2>
+
+<p>The Memento Design Pattern allows you to save historical states of an object and restore the object back from the historical states. As your application is progressing, you may want to save checkpoints in your application and restore back to those checkpoints later.</p>
+
+<img  style="width: 100%;" src="images/memento.png" alt="Memento diagram" />
+
+<ul>
+  <li>The <strong class="red">Originator</strong> class is the objects that will be saved and restored later:</li>
+  <ul>
+    <li>The <strong class="red">state</strong> variable contains information that represents the state of the Originator object. This is the variable that we save and restore.</li>
+    <li>The <strong class="red">CreateMemento</strong> method is used to save the state of the Originator. It creates a Memento object by saving the state variable into the Memento object and return it. This is for recording the state of the Originator.</li>
+    <li>The <strong class="red">SetMemento</strong> method restores the Originator by accepting a Memento object, unpackage it, and sets its state variable using the state variable from the Memento. This is for restoring the state of the Originator using the information that was previously saved in the Memento.</li>
+  </ul>
+  <li>The <strong class="red">Memento</strong> class stores the historical information of the Originator. The information is stored in its state variable.</li>
+  <li>The <strong class="red">Caretaker</strong> class manages the list of Memento. This is the class for the client code to access.</li>
+</ul>
+
+
+
+<h2>State Machine</h2>
+
+<p>A <strong class="red">finite state machine</strong> came out of a branch of computer science called automata theory whose family of data structures also includes the famous Turing machine. FSMs are the simplest member of that family.</p>
+
+<p><strong class="red">Automata theory</strong> is the study of abstract machines and automata, as well as the computational problems that can be solved using them. It is a theory in theoretical computer science, under discrete mathematics (a section of Mathematics and also of Computer Science). Automata comes from the Greek word αὐτόματα meaning "self-acting".</p>
+
+<img  style="width: 100%;" src="images/simple-automation.png" alt="Simple automation diagram" />
+
+<p>The picture above is a visualization of an automaton that recognizes strings containing an even number of 0s.</p>
+
+<h4>Visualisation of a simple state machine</h4>
+<br />
+
+<img  style="width: 100%;" src="images/state-machine.png" alt="State machine diagram" />
+
+
+<h2>Iterator</h2>
+
+<p>The Iterator pattern allows clients to effectively loop over a collection of objects.</p>
+
+<img  style="width: 100%;" src="images/iterator.jpg" alt="Iterator diagram" />
+
+
+<h2>Pub/Sub</h2>
+
+<p>Publish–subscribe is a messaging pattern where senders of messages, called publishers, do not program the messages to be sent directly to specific receivers, called subscribers. Instead, published messages are characterized into classes, without knowledge of what, if any, subscribers there may be. Similarly, subscribers express interest in one or more classes, and only receive messages that are of interest, without knowledge of what, if any, publishers there are.</p>
+
+<img  style="width: 100%;" src="images/pub-sub.png" alt="Pub/sub diagram" />
+
+<h2>Observer</h2>
+
+<p>The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.</p>
+
+<img  style="width: 100%;" src="images/observer.jpg" alt="Observer diagram" />
+
+<h4>What's the difference between pub/sub and observer pattern?</h4>
+<br />
+
+<img  style="width: 100%;" src="images/pub-sub-vs-observer.jpg" alt="Pub/sub vs observer diagram" />
+
+
+
+<h2>Mediator</h2>
+
+<p>The Mediator defines an object that controls how a set of objects interact. Loose coupling between colleague objects is achieved by having colleagues communicate with the Mediator, rather than with each other.</p>
+
+<img  style="width: 100%;" src="images/mediator.png" alt="Mediator diagram" />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h4>Example application: Airport control tower</h4>
+<br />
+
+<p>The control tower at a controlled airport demonstrates this pattern very well. The pilots of the planes approaching or departing the terminal area communicate with the tower rather than explicitly communicating with one another. The constraints on who can take off or land are enforced by the tower. It is important to note that the tower does not control the whole flight. It exists only to enforce constraints in the terminal area.</p>
+
+<img  style="width: 100%;" src="images/mediator_example.png" alt="Mediator example diagram" />
+
+
+
+
+<h2>Callback</h2>
+
+<p>A callback is a piece of executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at some convenient time. The invocation may be immediate as in a synchronous callback, or it might happen at later time as in an asynchronous callback. In all cases, the intention is to specify a function or subroutine as an entity that is, depending on the language, more or less similar to a variable.</p>
+
+<pre class="line-numbers"><code class="language-javascript">
+function someAction(x, y, someCallback) {
+    return someCallback(x, y);
+}
+
+function calcProduct(x, y) {
+    return x * y;
+}
+
+function calcSum(x, y) {
+    return x + y;
+}
+// alerts 75, the product of 5 and 15
+alert(someAction(5, 15, calcProduct));
+// alerts 20, the sum of 5 and 15
+alert(someAction(5, 15, calcSum));</code></pre>
+
+<br /><br /><br /><br />
+
+<hr />
+
+
+<!-- end of post -->
+
+    </div> <!-- /end .post -->
+
+    <div class="footer">
+      <p><a href="/about/">Valera Rozuvan</a> ::
+        <a href="/archives/">Mentoring JS</a> ::
+        <a href="/start/">EPAM Systems</a> ::
+        <a href="/books/">July 2015</a></p>
+
+    </div><!-- /end .footer-->
+
+  </div>  <!-- /end .container -->
+
+<script src="js/prism.js" type="text/javascript"></script>
+
+</body>
+</html>

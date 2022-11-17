@@ -1,0 +1,7 @@
+{
+  "test": 45,
+  "pageCollection": [
+    "one/page1.json",
+    "two/page2.json"
+  ]
+}

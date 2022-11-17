@@ -1,0 +1,9 @@
+{
+    // Comments are supported
+    "uid": "skss_server",
+    "append": true,
+    "watch": false,
+    "script": "index.js",
+    "args": ["--port", "8081", "--build_dir", "../client/dist"],
+    "sourceDir": "."
+}

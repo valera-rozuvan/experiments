@@ -1,0 +1,17 @@
+.container {
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.me {
+  height: 100%;
+  width: 50%;
+}
+
+.if {
+  height: 100%;
+  width: 50%;
+}

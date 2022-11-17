@@ -1,0 +1,6 @@
+[submodule "3rd_party/glew"]
+	path = 3rd_party/glew
+	url = https://github.com/nigels-com/glew.git
+[submodule "3rd_party/glfw"]
+	path = 3rd_party/glfw
+	url = https://github.com/glfw/glfw.git

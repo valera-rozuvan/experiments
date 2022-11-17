@@ -1,0 +1,77 @@
+<form role="form" name="searchForm" ng-submit="search()">
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <div class="form-group" ng-class="{'has-error': errors.poNumber}">
+        <label class="control-label search-po-number-label" >{{'i18n.search.poNumber' | translate}}:</label>
+        <input type="text" class="form-control search-po-number" ng-model="searchParams.poNumber" typeahead="poNumber for poNumber in getPoNumbers($viewValue)">
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group" ng-class="{'has-error': errors.vendorId}">
+        <label class="control-label search-vendor-name-label" >{{'i18n.search.vendorName' | translate}}:</label>
+        <input class="form-control search-vendor-name" ng-model="vendor.name" placeholder="{{'i18n.search.vendorNameOrPart' | translate}}" typeahead="vendor as vendor.name for vendor in getVendors($viewValue, 'name')" typeahead-template-url="booking/common/templates/vendorNameTypeahead.html">
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group" ng-class="{'has-error': errors.bookingId}">
+        <label class="control-label search-bookingid-label" >{{'i18n.search.bookingId' | translate}}:</label>
+        <input class="form-control search-bookingid" ng-model="searchParams.bookingId" typeahead="poNumber for poNumber in getBookingsId($viewValue)" placeholder="{{'i18n.search.bookingIDOrPart' | translate}}" >
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <div class="form-group" ng-class="{'has-error': errors.containerNumber}">
+        <label class="control-label search-containerNumber-label" >{{'i18n.search.containerNumber' | translate}}:</label>
+        <input type="text" ng-model="searchParams.containerNumber" class="form-control search-containerNumber" typeahead="poNumber for poNumber in getContainerNumbers($viewValue)">
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group" ng-class="{'has-error': errors.vendorId}">
+        <label class="control-label search-iss-vendorid-label">{{'i18n.search.vendorIssId' | translate}}:</label>
+        <input class="form-control search-iss-vendorid" ng-model="vendor.issId" typeahead="vendor as vendor.issId for vendor in getVendors($viewValue, 'issId')" typeahead-template-url="booking/common/templates/vendorIssTypeahead.html">
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group" ng-class="{'has-error': errors.bookedDate}">
+        <label class="control-label search-booked-date-label" >{{'i18n.search.bookedDate' | translate}}</label>
+        <expanding-datepicker ng-model="searchParams.bookedDate" input-class="search-booked-date"> </expanding-datepicker>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label search-booking-team-label" >{{'i18n.search.bookingTeamId' | translate}}:</label>
+        <select class="form-control search-booking-team" ng-model="searchParams.bookingTeamId">
+          <option selected="selected" value="">{{'i18n.search.selectTeamPlaceholder' | translate}}</option>
+          <option ng-repeat="team in teamsList" value="{{team.id}}" ng-selected="searchParams.bookingTeamId == team.id">{{team.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group" ng-class="{'has-error': errors.vendorId}">
+        <label class="control-label search-sap-vendorid-label" >{{'i18n.search.vendorSapId' | translate}}:</label>
+        <input class="form-control search-sap-vendorid" ng-model="vendor.sapId" typeahead="vendor as vendor.sapId for vendor in getVendors($viewValue, 'sapId')" typeahead-template-url="booking/common/templates/vendorSapTypeahead.html">
+      </div>
+    </div>
+    <div class="col-sm-5"></div>
+  </div>
+
+  <br />
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-3">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary search-button">{{'i18n.search.searchButton' | translate}}</button>
+        <button type="button" class="btn btn-primary reset-button" ng-click="reset()">{{'i18n.search.resetButton' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</form>

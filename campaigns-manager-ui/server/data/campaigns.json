@@ -1,0 +1,47 @@
+[
+  {
+    "id": "fc23c87a-fb0d-4315-aa2b-854f68e88f6a",
+    "name": "My first campaign",
+    "total_budget": 1000,
+    "daily_budget": 100,
+    "budget_daily_left": 100,
+    "views": 150,
+    "clicks_today": 0,
+    "clicks_yesterday": 0,
+    "clicks": 8,
+    "views_yesterday": 0,
+    "status": "ACTIVE",
+    "spending": 264600,
+    "spending_today": 0
+  },
+  {
+    "id": "98f7de85-ecd6-4916-9021-686371347284",
+    "name": "The biggest campaign ever",
+    "total_budget": 1000,
+    "daily_budget": 10,
+    "budget_daily_left": 10,
+    "views": 1046,
+    "clicks_today": 0,
+    "clicks_yesterday": 0,
+    "clicks": 2,
+    "views_yesterday": 0,
+    "status": "ACTIVE",
+    "spending": 1020319,
+    "spending_today": 0
+  },
+  {
+    "id": "98f7de85-ecd6-4916-9021-186371347284",
+    "name": "Campaign #3",
+    "total_budget": 7000,
+    "daily_budget": 60,
+    "budget_daily_left": 20,
+    "views": 2046,
+    "clicks_today": 0,
+    "clicks_yesterday": 0,
+    "clicks": 2,
+    "views_yesterday": 0,
+    "status": "ACTIVE",
+    "spending": 1030319,
+    "spending_today": 0
+  }
+]

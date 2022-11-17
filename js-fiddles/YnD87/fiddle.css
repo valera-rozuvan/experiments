@@ -1,0 +1,13 @@
+.outer_wrapper {
+    margin-top: -500px;
+}
+
+.bg {
+    top: 500px;
+    position: relative;
+}
+
+#canvas {
+    margin: -41px 0 0 0;
+    padding: 0;
+}

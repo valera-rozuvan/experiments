@@ -1,0 +1,81 @@
+<div id="customizeColumnsModal">
+
+  <div class="panel panel-primary">
+
+    <div class="panel-heading">
+      <h3 class="panel-title" ng-if="page === 'sorting'">{{'i18n.search.sortingModalTitle' | translate}}</h3>
+      <h3 class="panel-title" ng-if="page === 'customize'">{{'i18n.search.customizeTitle' | translate}}</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" ng-click="ok()" >{{'i18n.common.save' | translate}}</button>
+        <button type="button" class="btn btn-primary"  ng-click="cancel()" >{{'i18n.common.cancel' | translate}}</button>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="panel panel-default well">
+            <div class="panel-heading text-center">
+              <h3 class="panel-title" ng-if="page === 'sorting'">{{'i18n.search.sortedTitle' | translate}}</h3>
+              <h3 class="panel-title" ng-if="page === 'customize'">{{'i18n.search.enabledTitle' | translate}}</h3>
+            </div>
+            <div class="panel-body used-fields">
+              <div ng-repeat="(index, column) in usedFields track by column.fieldName">
+                <div class="list-group-item">
+                  <div class="center-text">
+
+                    <button type="button" class="btn btn-primary btn-xs" aria-label="{{'i18n.common.edit' | translate}}" ng-click="moveUp(index)" ng-disabled="index === 0">
+                      <span class="glyphicon glyphicon-arrow-up"></span>
+                    </button>
+
+                    <span ng-click="removeFromUsed(index)" class="sorting-selected-item">{{'i18n.search.columns.' + column.fieldName | translate}}</span>
+
+                    <button type="button" class="btn btn-primary btn-xs" aria-label="Edit" ng-click="moveDown(index)" ng-disabled="index === usedFields.length -1">
+                      <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>
+
+                    <div class="sorting-buttons" ng-if="page === 'sorting'">
+                      <button type="button" class="btn btn-warning" aria-label="Edit" ng-click="toggleSorting(index)"
+                      ng-if="column.direction === 'ASC'">
+                        <span class="glyphicon glyphicon glyphicon-sort-by-alphabet"></span>
+                      </button>
+
+                      <button type="button" class="btn btn-warning" aria-label="Edit" ng-click="toggleSorting(index)"
+                      ng-if="column.direction === 'DESC'">
+                        <span class="glyphicon glyphicon glyphicon glyphicon-sort-by-alphabet-alt"></span>
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="panel panel-default well">
+            <div class="panel-heading text-center">
+              <h3 class="panel-title" ng-if="page === 'sorting'">{{'i18n.search.unsortedTitle' | translate}}</h3>
+              <h3 class="panel-title" ng-if="page === 'customize'">{{'i18n.search.disabledTitle' | translate}}</h3>
+            </div>
+            <div class="panel-body unused-fields">
+              <div ng-repeat="(index, column) in unusedFields track by column.fieldName">
+                <div class="sorting-items list-group-item center-text" ng-click="addToUsed(index)">
+                  <span class="bg-default">{{'i18n.search.columns.' + column.fieldName | translate}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" ng-click="ok()" >{{'i18n.common.save' | translate}}</button>
+        <button type="button" class="btn btn-primary"  ng-click="cancel()" >{{'i18n.common.cancel' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>

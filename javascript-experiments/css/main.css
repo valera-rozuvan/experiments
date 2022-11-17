@@ -1,0 +1,167 @@
+/*
+ * main.css - Styling classes used by JavaScript experiments and core.
+ *
+ *
+ * Copyright 2012-2013 Valera Rozuvan
+ * http://javascript-experiments.net/
+ *
+ *
+ * This file is part of javascript-experiments.
+ *
+ * javascript-experiments is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * javascript-experiments is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.toc, .page {
+    padding-right: 20px;
+    padding-left: 10px;
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: "Avant Garde", "Century Gothic", sans-serif;
+}
+
+.toc_info {
+    text-align: right;
+    display: block;
+    clear: both;
+}
+
+.forkme_github {
+    display: none;
+    position: absolute;
+    width: 149px;
+    height: 149px;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.forkme_github a img {
+    border: none;
+    outline: 0px;
+}
+
+.toc li {
+    display: inline;
+    float: left;
+    margin: 0px 5px 10px 10px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.module {
+    margin: 20px 0px 20px 0px;
+    padding: 5px;
+    overflow: hidden;
+    word-wrap: break-word;
+
+    background-color: #64A2DF;
+
+    -moz-box-shadow: 3px 3px 4px #000;
+    -webkit-box-shadow: 3px 3px 4px #000;
+    box-shadow: 3px 3px 4px #000;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+.module p {
+    text-align: justify;
+}
+
+.module_caption {
+    text-align: center;
+    font-size: large;
+    border-bottom: 2px dashed #2079D1;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.octocat {
+    float: right;
+}
+
+.octocat a img {
+    border: none;
+    outline: 0px;
+}
+
+pre {
+    padding: 20px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+pre, pre code, p code, li code {
+    background-color: black;
+    color: yellow;
+
+    font-family: "Courier New", Courier, monospace;
+
+    font-size: 12px;
+}
+
+a, span.simple_link, span.experiment_link {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+
+.debugWindowCloseIcon {
+    display: inline;
+    float: right;
+    overflow: hidden;
+
+    width: 24px;
+    height: 24px;
+
+    margin-top: -2px;
+
+    cursor: pointer;
+}
+
+.debugWindowCloseIcon img {
+    border: none;
+    outline: 0px;
+
+    width: 24px;
+    height: 24px;
+}
+
+.debugWindowMessages {
+    overflow: auto;
+
+    height: 95%;
+
+    font-size: 11px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.debugWindowMessages textarea {
+    width: 95%;
+
+    font-size: 11px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.debugWindowInstructions {
+    margin-top: 9px;
+
+    text-align: right;
+    font-size: 9px;
+    font-family: "Courier New", Courier, monospace;
+}

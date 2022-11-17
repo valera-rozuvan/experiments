@@ -1,0 +1,47 @@
+<div class="table-buttons">
+
+  <div class="tool-buttons">
+    <button class="btn btn-warning search-sorting-button" aria-label="{{'i18n.common.edit' | translate}}" ng-click="customizeSorting()">
+      <span class="glyphicon glyphicon-sort"></span>
+    </button>
+    <button class="btn btn-warning search-edit-button" aria-label="{{'i18n.common.edit' | translate}}" ng-click="customizeColumns()">
+      <span class="glyphicon glyphicon-edit"></span>
+    </button>
+    <a role="button" class="btn btn-warning search-export-button" ng-mousedown="getCsvRestUrl()" ng-href="{{ csvRestUrl }}">
+      <span class="glyphicon glyphicon-download-alt"></span>
+    </a>
+    <button ng-click="print()" class="btn btn-warning search-print-button" aria-label="{{'i18n.common.print' | translate}}">
+      <span class="glyphicon glyphicon-print"></span>
+    </button>
+  </div>
+
+  <div class="pagination-buttons">
+    <ul class="pagination">
+      <li ng-repeat="num in rowsCounts" ng-class="{'active': displayParams.rowsLimit == num}" ng-click="setRowsCount(num)">
+        <a href="">{{num}}</a>
+      </li>
+    </ul>
+  </div>
+  <br class="clear-both" />
+</div>
+
+<table class="table table-striped table-override table-hover table-search" export-csv="csv">
+	<thead>
+		<th ng-repeat="column in columns" ng-click="setSortingOrder(column.fieldName)"
+			class="text-center search-header-{{column.fieldName}} search-header" ng-class="{
+			   'sorted': ordering.title === column.fieldName
+			}">
+				{{'i18n.search.columns.' + column.fieldName | translate}}
+        <span ng-show="ordering.title === column.fieldName && ordering.direction === 'ASC'" class="glyphicon glyphicon-arrow-down"></span>
+        <span ng-show="ordering.title === column.fieldName && ordering.direction === 'DESC'" class="glyphicon glyphicon-arrow-up"></span>
+	    </th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="booking in searchResults" ui-sref="booking(booking)">
+      <td ng-repeat="column in columns" class="search-field-{{column.fieldName}} search-field">
+                {{booking[column.fieldName]}}
+            </td>
+        </tr>
+	</tbody>
+</table>
+<ng-include src="'main-common/templates/pagination.html'"></ng-include>

@@ -1,0 +1,16 @@
+html, body {
+  padding: 20px;
+  margin: 0;
+}
+
+#credentials, #dialler, #messages {
+  clear: both;
+}
+
+#remote-video {
+  max-width: 300px;
+}
+
+#local-video {
+  max-width: 150px;
+}

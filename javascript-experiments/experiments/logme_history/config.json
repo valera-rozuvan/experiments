@@ -1,0 +1,15 @@
+{
+    "name": "logme() history example",
+    "to_run": [
+        {
+            "source": "md!description.md",
+            "description": "Description",
+            "githubLink": "experiments/logme_history/md/description.md"
+        },
+        {
+            "source": "module1",
+            "description": "Example",
+            "githubLink": "experiments/logme_history/js/module1.js"
+        }
+    ]
+}

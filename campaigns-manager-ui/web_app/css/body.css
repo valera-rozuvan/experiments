@@ -1,0 +1,9 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.campaign-chart {
+  margin-left: auto;
+  margin-right: auto;
+}

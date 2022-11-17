@@ -1,0 +1,118 @@
+slider.r-control {
+    width: 300px;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background: white;
+  font-family: "Open Sans", arial;
+  min-width: 1150px;
+}
+table {
+  width: 100%;
+  max-width: 600px;
+  height: 220px;
+  border-collapse: collapse;
+  border: 1px solid #38678f;
+  margin: 50px auto;
+  background: white;
+}
+th {
+  background: steelblue;
+  height: 44px;
+  width: 25%;
+  font-weight: lighter;
+  text-shadow: 0 1px 0 #38678f;
+  color: white;
+  border: 1px solid #38678f;
+  box-shadow: inset 0px 1px 2px #568ebd;
+  transition: all 0.2s;
+}
+tr {
+  border-bottom: 1px solid #cccccc;
+}
+tr:last-child {
+  border-bottom: 0px;
+}
+td {
+  border-right: 1px solid #cccccc;
+  padding: 10px;
+  transition: all 0.2s;
+}
+td:last-child {
+  border-right: 0px;
+}
+td.selected {
+  background: #d7e4ef;
+  z-index: 1;
+}
+td input {
+  font-size: 14px;
+  background: none;
+  outline: none;
+  border: 0;
+  display: table-cell;
+  height: 100%;
+  width: 100%;
+}
+td input:focus {
+  box-shadow: 0 1px 0 steelblue;
+  color: steelblue;
+}
+::-moz-selection {
+  background: steelblue;
+  color: white;
+}
+::selection {
+  background: steelblue;
+  color: white;
+}
+.heavyTable {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: float 5s infinite;
+}
+
+.container {
+  display: block;
+  clear: both;
+  float: left;
+}
+
+.container.footer {
+  width: 100%;
+  height: 300px;
+}
+
+.container.graph {
+  border-collapse: collapse;
+  border: 1px solid #38678f;
+}
+
+.container-cell {
+  display: inline;
+  clear: none;
+  float: left;
+
+  margin-right: 50px;
+}
+
+.container-cell.left-legend {
+  margin-right: 10px;
+  padding-top: 240px;
+  padding-left: 5px;
+}
+
+.container-cell.info {
+  width: 420px;
+}
+
+.container-cell.plot {
+  text-align: center;
+}
+
+#chaos_plot, #chaos_plot_2 {
+  width: 1000px;
+  height: 500px;
+}

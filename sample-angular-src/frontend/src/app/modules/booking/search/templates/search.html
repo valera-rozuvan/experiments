@@ -1,0 +1,5 @@
+<div id="search-page">
+  <ng-include src="'booking/search/templates/form.html'"></ng-include>
+  <ng-include ng-show="searchResults.length" src="'booking/search/templates/table.html'"></ng-include>
+  <alert type="info" ng-show="!searchResults.length && alertIsDisplayed" close="hideAlert()">{{'i18n.search.emptyResponse' | translate}}</alert>
+</div>

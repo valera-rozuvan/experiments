@@ -1,0 +1,43 @@
+{
+  "name": "campaigns-manager-ui",
+  "version": "0.0.1",
+  "description": "A demo UI application for a potential Campaigns Manager service",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "build": "webpack --config webpack.dev.js",
+    "build-watch": "webpack --watch --progress --config webpack.dev.js",
+    "build-prod": "webpack --config webpack.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valera-rozuvan/campaigns-manager-ui.git"
+  },
+  "author": "Valera Rozuvan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valera-rozuvan/campaigns-manager-ui/issues"
+  },
+  "homepage": "https://github.com/valera-rozuvan/campaigns-manager-ui",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "chart.js": "^2.7.1",
+    "express": "^4.16.2",
+    "livereload": "^0.6.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1"
+  }
+}

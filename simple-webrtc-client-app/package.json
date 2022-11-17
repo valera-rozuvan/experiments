@@ -1,0 +1,22 @@
+{
+  "name": "simple-webrtc-client-app",
+  "version": "0.0.1",
+  "description": "Simple WebRTC client application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valera-rozuvan/simple-webrtc-client-app.git"
+  },
+  "author": "Valera Rozuvan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valera-rozuvan/simple-webrtc-client-app/issues"
+  },
+  "homepage": "https://github.com/valera-rozuvan/simple-webrtc-client-app#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "6"
+before_install:
+  - npm install -g eslint
+  - npm install -g nyc
+  - npm install -g mocha
+install:
+  - npm install
+script:
+  - eslint .
+  - mocha --reporter spec test
+  - nyc npm test
+after_success:
+  - npm run coverage

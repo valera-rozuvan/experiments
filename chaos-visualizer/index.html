@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-ng-app="app">
+    <head>
+        <meta charset="UTF-8" />
+
+        <title>Chaos visualizer</title>
+
+        <link rel="stylesheet" href="css/angular-slider.css" />
+        <link rel="stylesheet" href="css/main.css" />
+
+        <!--[if lte IE 8]>
+            <script
+                language="javascript"
+                type="text/javascript"
+                src="js/excanvas.js"
+            ></script>
+        <![endif]-->
+    </head>
+
+    <body data-ng-controller="FinanceController">
+        <div class="container">
+            <h1>Chaos visualizer</h1>
+            <h2>bifurcation diagram of the logistic map</h2>
+            <br /><br />
+
+            <p>From <a href="http://en.wikipedia.org/wiki/Bifurcation_diagram">Wikipedia</a>,
+            the free encyclopedia:</p>
+
+            <p>In mathematics, particularly in dynamical systems, a
+            <strong>bifurcation diagram</strong> shows the possible long-term values
+            (equilibria/fixed points or periodic orbits) of a system as a function
+            of a bifurcation parameter in the system. It is usual to represent
+            stable solutions with a solid line and unstable solutions with a dotted
+            line.</p>
+
+            <p>An example is the bifurcation diagram of the logistic map:</p>
+
+            <p>$ x_{n+1}=rx_n(1-x_n). \, $</p>
+
+            <p>The bifurcation parameter $r$ is shown on the horizontal axis of the
+            plot and the vertical axis shows the possible long-term population
+            values of the logistic function.</p>
+
+            <p>The bifurcation diagram nicely shows the forking of the possible
+            periods of stable orbits from $1$ to $2$ to $4$ to $8$ etc. Each of these
+            bifurcation points is a period-doubling bifurcation. The ratio of the
+            lengths of successive intervals between values of r for which
+            bifurcation occurs converges to the first Feigenbaum constant.</p>
+        </div>
+
+        <div class="container">
+            <div class="container-cell info">
+                <p>Use the slider, or the edit box to change the value of $ r $.</p>
+
+                1.0
+                <slider
+                    class="r-control" floor="1" ceiling="4" step="0.01"
+                    precision="2"
+                    data-ng-model="r"
+                ></slider> 4.0
+                <br />
+
+                $ r = $
+                <input type="text" data-ng-model="r" />
+                <br /><br />
+
+                <p>The logistic map formula is a recursive formula. We need to
+                define a maximum $ N_{max} $ to which we will calculate the
+                formula.</p>
+                <br />
+
+                $ N_{max} = $ <input type="text" data-ng-model="N_max" />
+                <br /><br /><br />
+
+                <p>Try changing the $ r $ value and observe the table on the
+                right. You will notice that as the $ r $ increases towards
+                $ 4 $ we start to get more and more different $ x_{N_{max}} $
+                values.</p>
+            </div>
+
+            <div class="container-cell">
+                <table class="heavyTable">
+                    <tr>
+                        <th>$ x_1 $</th>
+                        <th>$ x_{N_{max}} $</th>
+                    </tr>
+                    <tr data-ng-repeat="d in outputData">
+                        <td>{{ d.x_1 | number: 1}}</td>
+                        <td>{{ d.x_N_max }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="container">
+            <p>Now if we want to get the general picture, let us plot only unique
+            $ x_{N_{max}} $ for each $ r $. Below is such a graph. Note that
+            the number of points had been kept low for the sake of lessening the
+            memory consumption in the browser. To see what a fine detailed graph
+            would look like, please check out the
+            <a href="http://en.wikipedia.org/wiki/Bifurcation_diagram">Wikipedia</a>
+            article.</p>
+        </div>
+
+        <div class="container graph">
+            <div class="container-cell left-legend">$ x_{N_{max}} $</div>
+            <div class="container-cell plot">
+                <div id="chaos_plot"></div>
+                <br />
+                $ r $
+            </div>
+        </div>
+
+        <div class="container">
+            <p>Here is the same graph, but we have zoomed out a bit.</p>
+        </div>
+
+        <div class="container graph">
+            <div class="container-cell left-legend">$ x_{N_{max}} $</div>
+            <div class="container-cell plot">
+                <div id="chaos_plot_2"></div>
+                <br />
+                $ r $
+            </div>
+        </div>
+
+        <div class="container footer"></div>
+
+        <script
+            type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.js"
+        ></script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js"],
+                jax: ["input/TeX", "output/HTML-CSS"],
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true
+                },
+                "HTML-CSS": { availableFonts: ["TeX"] }
+            });
+        </script>
+        <script
+            type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="js/angular-slider.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="js/jquery.flot.js"
+        ></script>
+        <script
+            type="text/javascript"
+            src="js/main.js"
+        ></script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+{
+    "name": "Lanczos resampling",
+    "to_run": [
+        {
+            "source": "md!module1.md",
+            "description": "Introduction",
+            "githubLink": "experiments/lanczos_resampling/md/module1.md"
+        },
+        {
+            "source": "module2",
+            "description": "Theory: part 1",
+            "githubLink": "experiments/lanczos_resampling/js/module2.js"
+        },
+        {
+            "source": "module3",
+            "description": "Theory: part 2",
+            "githubLink": "experiments/lanczos_resampling/js/module3.js"
+        },
+        {
+            "source": "md!module4.md",
+            "description": "Lanczos filter: simple example",
+            "githubLink": "experiments/lanczos_resampling/md/module4.md",
+            "useMathJax": "true"
+        }
+    ]
+}

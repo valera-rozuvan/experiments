@@ -1,0 +1,142 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Shortest Sub-Segment</title>
+        <meta name="description" content="Shortest Sub-Segment problem solution.">
+        <meta name="author" content="Valera Rozuvan">
+
+        <link rel="stylesheet" href="styles.css?v=1.0">
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <a href="https://github.com/valera-rozuvan/shortest_sub_segment">
+            <img
+                style="position: absolute; top: 0; right: 0; border: 0;"
+                src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+                alt="Fork me on GitHub"
+            />
+        </a>
+
+        <h1>Shortest Sub-Segment</h1>
+
+        <h3>Original problem can be found at <a href="https://amazon.interviewstreet.com/challenges/dashboard/#problem/4fd648244715d">Amazon challenges / Shortest Sub-segment</a>.</h3>
+
+        <div class="problem">
+            <!--
+                The entire <div class="problem"> HTML section has been copy-pasted from
+                original challenge site.
+            -->
+            <p>
+                Given a paragraph of text, write a program to find the first shortest sub-segment that contains each of the given k words at least once. A segment is said to be shorter than other if it contains less number of words.
+            </p>
+            <p>
+                Ignore characters other than [a-z][A-Z] in the text. Comparison between the strings should be case-insensitive.
+            </p>
+            <p>
+                If no sub-segment is found then the program should output “NO SUBSEGMENT FOUND”.
+            </p>
+            <div>
+                <strong>Input format :</strong>
+            </div>
+            <div>
+                First line of the input contains the text.
+            </div>
+            <div>
+                Next line contains k , the number of &nbsp;words given to be searched.
+            </div>
+            <div>
+                Each of the next k lines contains a word.
+            </div>
+            <div>
+                <strong>Output format :</strong>
+            </div>
+            <div>
+                Print first shortest sub-segment that contains given k words , ignore special characters, numbers.If no sub-segment is found it should return "NO SUBSEGMENT FOUND"
+            </div>
+            <div>
+                <strong>Sample Input :</strong>
+            </div>
+            <div>
+                This is a test. This is a programming test. This is a programming test in any language.
+            </div>
+            <div>
+                4
+            </div>
+            <div>
+                this
+            </div>
+            <div>
+                a
+            </div>
+            <div>
+                test
+            </div>
+            <div>
+                programming
+            </div>
+            <div>
+                <strong>Sample Output :</strong>
+            </div>
+            <div>
+                a programming test This
+            </div>
+            <div>
+                <strong>Explanation :</strong>
+            </div>
+            <div>
+                In this test case segment "a programming test. This" contains given four words. You have to print without special characters, numbers so output is "a programming test This". Another segment "This is a programming test." also contains given four words but have more number of words.
+            </div>
+            <p>
+                <strong>Constraint :</strong>
+            </p>
+            <p>
+                Total number of character in a paragraph will not be more than 200,000.<br>
+                0 &lt; k &lt;= no. of words in paragraph.<br>
+                0 &lt; Each word length &lt; 15
+            </p>
+        </div>
+
+        <form name="search_form" action="#" method="get">
+            <p>
+                Input:
+                <textarea
+                    name="input_text"
+                    rows="20"
+                    cols="50"
+                >Please input the text to search.
+2
+input
+text</textarea>
+
+                Output:
+                <textarea
+                    name="output_text"
+                    rows="20"
+                    cols="50"
+                    disabled="disabled"
+                ></textarea>
+
+                <br />
+                <br />
+
+                <input type="submit" value="Search" />
+                <input type="reset" />
+            </p>
+        </form>
+        
+        <br />
+        <br />
+        
+        <h4>&copy; 2013 <a href="http://valera.rozuvan.net">Valera Rozuvan</a></h4>
+
+        <script src="jquery-2.0.3.min.js"></script>
+        <script src="all.js"></script>
+    </body>
+</html>

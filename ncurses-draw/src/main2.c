@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
   signal(SIGWINCH, handle_winch);
 
   while(getch() != 27){
-    /* Nada */
+    // forever loop, until user presses `ESC` key
   }
 
   endwin();

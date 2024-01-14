@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Minimalistic Vue JS</title>
+  <script type="text/javascript" src="./vue.global.prod.js"></script>
+
+  <script type="text/javascript">
+    (async () => {
+      const { domReady } = await import("./dom-ready.js");
+      await domReady();
+
+      const { initApp } = await import("./init-app.js");
+      await initApp();
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    {{ message }}
+  </div>
+</body>
+<script>
+
+</script>
+</html>

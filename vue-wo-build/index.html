@@ -4,23 +4,26 @@
 <head>
   <meta charset="utf-8">
   <title>Minimalistic Vue JS</title>
-  <script type="text/javascript" src="./vue.global.prod.js"></script>
 
+  <link rel="stylesheet" href="css/app.css">
+
+  <script type="text/javascript" src="vendor/vue.global.prod.js"></script>
   <script type="text/javascript">
     (async () => {
-      const { domReady } = await import("./dom-ready.js");
+      const { domReady } = await import("./utils/domReady.js");
       await domReady();
 
-      const { initApp } = await import("./init-app.js");
-      await initApp();
+      const { initApp } = await import("./utils/initApp.js");
+      const { RootComponent } = await import("./components/RootComponent.js")
+      await initApp("root_app", RootComponent);
+
+      console.log('App mounted!');
     })();
   </script>
 </head>
 
 <body>
-  <div id="app">
-    {{ message }}
-  </div>
+  <div id="root_app"></div>
 </body>
 <script>
 

@@ -2,17 +2,16 @@ function domReady() {
   let resolve;
   let reject;
 
-  let domLoaded = false;
-
   const promise = new Promise((_res, _rej) => {
     resolve = _res;
     reject = _rej;
   });
 
+  let domLoaded = false;
+
   if (document.readyState !== 'loading') {
     domLoaded = true;
-    resolve();
-    return;
+    return resolve();
   }
 
   document.addEventListener('DOMContentLoaded', () => {

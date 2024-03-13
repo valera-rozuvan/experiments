@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue JS and Metamask</title>
+
+  <link rel="stylesheet" href="css/app.css">
+
+  <script type="text/javascript" src="vendor/detect-provider.min.js"></script>
+  <script type="text/javascript" src="vendor/vue.global.prod.js"></script>
+  <script type="text/javascript">
+    (async () => {
+      const { domReady } = await import("./utils/domReady.js");
+      await domReady();
+
+      const { initApp } = await import("./utils/initApp.js");
+      const { RootComponent } = await import("./components/RootComponent.js")
+      await initApp("root_app", RootComponent);
+
+      console.log('App mounted!');
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root_app"></div>
+</body>
+<script>
+
+</script>
+</html>

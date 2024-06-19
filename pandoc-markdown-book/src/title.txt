@@ -1,0 +1,19 @@
+---
+title: Some Markdown Book
+subtitle: Everything is awesome 
+author: Ryan Frazier
+subject: "markdown"
+keywords: [books,programming]
+language: en-US
+cover-image: img/example-book-cover.png
+lof: true
+lof-own-page: true
+toc-own-page: true
+titlepage: false
+titlepage-background: backgrounds/background10.pdf
+titlepage-text-color: "333333"
+titlepage-rule-color: "00737C"
+papersize: letter
+prepend-titlepage: img/example-book-cover.pdf
+colorlinks: true
+---

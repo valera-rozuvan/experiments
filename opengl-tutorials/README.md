@@ -1,2 +1,0 @@
-# opengl-tutorials
-OpenGL tutorials

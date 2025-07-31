@@ -1,2 +1,0 @@
-# react-playground
-React playground

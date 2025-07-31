@@ -1,9 +1,0 @@
-{
-  "plugins": [
-    "macros",
-    "preval"
-  ],
-  "presets": [
-    "react-app"
-  ]
-}

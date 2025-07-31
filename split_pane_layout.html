@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Pane Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .pane {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .left-pane {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            flex-basis: 50%;
+            min-width: 100px;
+        }
+
+        .right-pane {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            flex-basis: 50%;
+            min-width: 100px;
+        }
+
+        .splitter {
+            width: 8px;
+            background: #e2e8f0;
+            cursor: col-resize;
+            position: relative;
+            border-left: 1px solid #cbd5e0;
+            border-right: 1px solid #cbd5e0;
+            transition: background-color 0.2s ease;
+        }
+
+        .splitter:hover {
+            background: #cbd5e0;
+        }
+
+        .splitter:active {
+            background: #a0aec0;
+        }
+
+        .splitter::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 40px;
+            background: #64748b;
+            border-radius: 2px;
+            opacity: 0.6;
+        }
+
+        .splitter:hover::before {
+            opacity: 0.8;
+        }
+
+        .resizing {
+            user-select: none;
+        }
+
+        .resizing * {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="pane left-pane" id="leftPane">
+            <div>Left Pane</div>
+        </div>
+        <div class="splitter" id="splitter"></div>
+        <div class="pane right-pane" id="rightPane">
+            <div>Right Pane</div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('container');
+        const leftPane = document.getElementById('leftPane');
+        const rightPane = document.getElementById('rightPane');
+        const splitter = document.getElementById('splitter');
+        
+        let isResizing = false;
+        let startX = 0;
+        let startLeftWidth = 0;
+        let containerWidth = 0;
+
+        function startResize(e) {
+            isResizing = true;
+            startX = e.clientX;
+            containerWidth = container.offsetWidth;
+            startLeftWidth = leftPane.offsetWidth;
+            
+            document.body.classList.add('resizing');
+            
+            document.addEventListener('mousemove', handleResize);
+            document.addEventListener('mouseup', stopResize);
+            
+            e.preventDefault();
+        }
+
+        function handleResize(e) {
+            if (!isResizing) return;
+            
+            const deltaX = e.clientX - startX;
+            const newLeftWidth = startLeftWidth + deltaX;
+            const newLeftPercentage = (newLeftWidth / containerWidth) * 100;
+            
+            // Constrain the resize between 10% and 90%
+            const minPercentage = 10;
+            const maxPercentage = 90;
+            
+            if (newLeftPercentage >= minPercentage && newLeftPercentage <= maxPercentage) {
+                const rightPercentage = 100 - newLeftPercentage;
+                
+                leftPane.style.flexBasis = `${newLeftPercentage}%`;
+                rightPane.style.flexBasis = `${rightPercentage}%`;
+            }
+        }
+
+        function stopResize() {
+            isResizing = false;
+            document.body.classList.remove('resizing');
+            
+            document.removeEventListener('mousemove', handleResize);
+            document.removeEventListener('mouseup', stopResize);
+        }
+
+        // Add event listeners
+        splitter.addEventListener('mousedown', startResize);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Recalculate container width on window resize
+            containerWidth = container.offsetWidth;
+        });
+
+        // Prevent text selection during drag
+        splitter.addEventListener('selectstart', (e) => {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>

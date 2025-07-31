@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable & Resizable Elements</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .draggable-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 120px;
+            min-height: 120px;
+            cursor: default;
+            transition: transform 0.1s ease;
+        }
+
+        .draggable-element:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .draggable-element.dragging {
+            transform: rotate(2deg) scale(1.02);
+            z-index: 1000;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+        }
+
+        .drag-handle {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 12px 12px 4px 4px;
+            cursor: move;
+            user-select: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .drag-handle::before {
+            content: '⋮⋮';
+            font-size: 12px;
+            opacity: 0.8;
+            letter-spacing: -2px;
+        }
+
+        .drag-handle:hover {
+            background: linear-gradient(135deg, #ff5252, #d84315);
+        }
+
+        .element-content {
+            padding: 20px;
+            color: #333;
+            font-size: 14px;
+            height: calc(100% - 48px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .resize-handle {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #4ecdc4, #2980b9);
+            cursor: nw-resize;
+            border-radius: 12px 0 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+
+        .resize-handle::before {
+            content: '◢';
+            color: white;
+            font-size: 10px;
+            transform: rotate(180deg);
+        }
+
+        .resize-handle:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #26d0ce, #1e88e5);
+        }
+
+        .element-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .element-description {
+            font-size: 12px;
+            color: #7f8c8d;
+            line-height: 1.4;
+        }
+
+        .add-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .add-button:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="draggable-element" style="top: 100px; left: 100px; width: 200px; height: 150px;">
+            <div class="drag-handle">Element 1</div>
+            <div class="element-content">
+                <div class="element-title">Creative Block</div>
+                <div class="element-description">Drag me around and resize me!</div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div class="draggable-element" style="top: 200px; left: 350px; width: 250px; height: 180px;">
+            <div class="drag-handle">Element 2</div>
+            <div class="element-content">
+                <div class="element-title">Design Canvas</div>
+                <div class="element-description">Interactive elements with smooth animations</div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div class="draggable-element" style="top: 50px; left: 650px; width: 180px; height: 160px;">
+            <div class="drag-handle">Element 3</div>
+            <div class="element-content">
+                <div class="element-title">Widget Box</div>
+                <div class="element-description">Glassmorphism meets functionality</div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+
+        <div class="draggable-element" style="top: 350px; left: 150px; width: 220px; height: 140px;">
+            <div class="drag-handle">Element 4</div>
+            <div class="element-content">
+                <div class="element-title">Component Hub</div>
+                <div class="element-description">Modern UI with drag & resize</div>
+            </div>
+            <div class="resize-handle"></div>
+        </div>
+    </div>
+
+    <button class="add-button" onclick="addNewElement()">+</button>
+
+    <script>
+        let elementCounter = 5;
+        let isDragging = false;
+        let isResizing = false;
+        let currentElement = null;
+        let offset = { x: 0, y: 0 };
+        let startSize = { width: 0, height: 0 };
+        let startPos = { x: 0, y: 0 };
+
+        // Initialize drag and resize functionality for all elements
+        function initializeElement(element) {
+            const dragHandle = element.querySelector('.drag-handle');
+            const resizeHandle = element.querySelector('.resize-handle');
+
+            // Drag functionality
+            dragHandle.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                currentElement = element;
+                element.classList.add('dragging');
+                
+                const rect = element.getBoundingClientRect();
+                offset.x = e.clientX - rect.left;
+                offset.y = e.clientY - rect.top;
+                
+                e.preventDefault();
+            });
+
+            // Resize functionality
+            resizeHandle.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                currentElement = element;
+                
+                const rect = element.getBoundingClientRect();
+                startSize.width = rect.width;
+                startSize.height = rect.height;
+                startPos.x = e.clientX;
+                startPos.y = e.clientY;
+                
+                e.preventDefault();
+                e.stopPropagation();
+            });
+        }
+
+        // Global mouse move handler
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging && currentElement) {
+                const container = document.getElementById('container');
+                const containerRect = container.getBoundingClientRect();
+                
+                let newX = e.clientX - containerRect.left - offset.x;
+                let newY = e.clientY - containerRect.top - offset.y;
+                
+                // Keep element within bounds
+                newX = Math.max(0, Math.min(newX, containerRect.width - currentElement.offsetWidth));
+                newY = Math.max(0, Math.min(newY, containerRect.height - currentElement.offsetHeight));
+                
+                currentElement.style.left = newX + 'px';
+                currentElement.style.top = newY + 'px';
+            }
+            
+            if (isResizing && currentElement) {
+                const deltaX = e.clientX - startPos.x;
+                const deltaY = e.clientY - startPos.y;
+                
+                let newWidth = Math.max(120, startSize.width + deltaX);
+                let newHeight = Math.max(120, startSize.height + deltaY);
+                
+                // Keep within container bounds
+                const container = document.getElementById('container');
+                const elementRect = currentElement.getBoundingClientRect();
+                const containerRect = container.getBoundingClientRect();
+                
+                const maxWidth = containerRect.width - (elementRect.left - containerRect.left);
+                const maxHeight = containerRect.height - (elementRect.top - containerRect.top);
+                
+                newWidth = Math.min(newWidth, maxWidth);
+                newHeight = Math.min(newHeight, maxHeight);
+                
+                currentElement.style.width = newWidth + 'px';
+                currentElement.style.height = newHeight + 'px';
+            }
+        });
+
+        // Global mouse up handler
+        document.addEventListener('mouseup', () => {
+            if (isDragging && currentElement) {
+                currentElement.classList.remove('dragging');
+            }
+            isDragging = false;
+            isResizing = false;
+            currentElement = null;
+        });
+
+        // Add new element function
+        function addNewElement() {
+            const container = document.getElementById('container');
+            const newElement = document.createElement('div');
+            newElement.className = 'draggable-element';
+            
+            // Random position
+            const randomX = Math.random() * (window.innerWidth - 250);
+            const randomY = Math.random() * (window.innerHeight - 200);
+            
+            newElement.style.left = randomX + 'px';
+            newElement.style.top = randomY + 'px';
+            newElement.style.width = '200px';
+            newElement.style.height = '150px';
+            
+            // Random colors for variety
+            const colors = [
+                'linear-gradient(135deg, #667eea, #764ba2)',
+                'linear-gradient(135deg, #f093fb, #f5576c)',
+                'linear-gradient(135deg, #4facfe, #00f2fe)',
+                'linear-gradient(135deg, #43e97b, #38f9d7)',
+                'linear-gradient(135deg, #fa709a, #fee140)'
+            ];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            newElement.innerHTML = `
+                <div class="drag-handle" style="background: ${randomColor}">Element ${elementCounter}</div>
+                <div class="element-content">
+                    <div class="element-title">New Element</div>
+                    <div class="element-description">Fresh element ready for action!</div>
+                </div>
+                <div class="resize-handle"></div>
+            `;
+            
+            container.appendChild(newElement);
+            initializeElement(newElement);
+            elementCounter++;
+            
+            // Add entrance animation
+            newElement.style.transform = 'scale(0)';
+            newElement.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            setTimeout(() => {
+                newElement.style.transform = 'scale(1)';
+            }, 10);
+        }
+
+        // Initialize existing elements
+        document.querySelectorAll('.draggable-element').forEach(initializeElement);
+
+        // Prevent context menu on drag handles
+        document.querySelectorAll('.drag-handle').forEach(handle => {
+            handle.addEventListener('contextmenu', e => e.preventDefault());
+        });
+
+        // Keyboard shortcut to add new element
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                addNewElement();
+            }
+        });
+    </script>
+</body>
+</html>
